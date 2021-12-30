@@ -1,4 +1,5 @@
-from dbaseLogic import addEntry, getEntries
+from dbaseLogic import createTable, addEntry, getEntries
+
 
 menu = """Please select one of the following options:
 1) Add new entry for today.
@@ -17,12 +18,14 @@ def promptNewEntry():
 
 
 def viewEntries(entries):
-    for entry in entries:
-        print(f"{entry['date']}\n{entry['content']}\n\n")
+    for cursor in entries:
+        print(f"{cursor['date']}\n{cursor['content']}\n\n")
 
 
 print(welcome)
+createTable()
 
+# menu options
 while (user_input := input(menu)) != "3":  # used := "walrus" operator here
     if user_input == "1":
         promptNewEntry()
