@@ -18,18 +18,23 @@ def promptNewEntry():
 
 
 def viewEntries(entries):
-    for cursor in entries:
-        print(f"{cursor['date']}\n{cursor['content']}\n\n")
+    for entry in entries:
+        print(f"{entry['date']}\n{entry['content']}\n\n")
 
 
-print(welcome)
-createTable()
+def main():
+    print(welcome)
+    createTable()
 
-# menu options
-while (user_input := input(menu)) != "3":  # used := "walrus" operator here
-    if user_input == "1":
-        promptNewEntry()
-    elif user_input == "2":
-        viewEntries(getEntries())
-    else:
-        print("Invalid option, please try again.")
+    # menu options
+    while (user_input := input(menu)) != "3":  # used := "walrus" operator here
+        if user_input == "1":
+            promptNewEntry()
+        elif user_input == "2":
+            viewEntries(getEntries())
+        else:
+            print("Invalid option, please try again.")
+
+
+if __name__ == "__main__":
+    main()
